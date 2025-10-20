@@ -1,98 +1,137 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🧩 MyHub API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A modern backend API built with **NestJS + Prisma + PostgreSQL**, running inside a **Docker** environment.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project was created as part of a professional **FullStack learning journey**, focused on improving backend fundamentals, database integration, and clean API documentation.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🚀 Getting Started
 
-## Project setup
+### 🧱 Requirements
 
-```bash
-$ npm install
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/en/) (v18 or higher)
+- [Docker](https://www.docker.com/)
+- [Git](https://git-scm.com/)
+- [PostgreSQL](https://www.postgresql.org/) *(optional if not using Docker)*
+
+---
+
+### ⚙️ Setup Instructions
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/<your-username>/myhub.git
+   cd myhub
+   ```
+
+2. **Start the database using Docker**
+   ```bash
+   docker-compose up -d
+   ```
+   > The PostgreSQL instance will run on `localhost:5433`.
+
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Configure environment variables**
+   Create a `.env` file in the root directory:
+   ```env
+   DATABASE_URL="postgresql://myhub:myhub123@localhost:5433/myhub"
+   ```
+
+5. **Initialize Prisma**
+   ```bash
+   npx prisma generate
+   npx prisma migrate dev --name init
+   ```
+
+6. **Run the development server**
+   ```bash
+   npm run start:dev
+   ```
+   > Your API will be available at [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📦 Tech Stack
+
+| Technology | Purpose |
+|-------------|----------|
+| [NestJS](https://nestjs.com/) | Modular and scalable backend framework |
+| [Prisma](https://www.prisma.io/) | Type-safe ORM for Node.js |
+| [PostgreSQL](https://www.postgresql.org/) | Relational database |
+| [Docker](https://www.docker.com/) | Containerized environment |
+| [TypeScript](https://www.typescriptlang.org/) | Static typing and developer safety |
+
+---
+
+## 🧩 Project Structure
+
+```
+myhub/
+ ┣ src/
+ ┃ ┣ modules/
+ ┃ ┃ ┣ users/
+ ┃ ┃ ┃ ┣ users.controller.ts
+ ┃ ┃ ┃ ┣ users.service.ts
+ ┃ ┃ ┃ ┗ dto/
+ ┃ ┣ main.ts
+ ┃ ┗ app.module.ts
+ ┣ prisma/
+ ┃ ┗ schema.prisma
+ ┣ .env
+ ┣ docker-compose.yml
+ ┣ package.json
+ ┗ README.md
 ```
 
-## Compile and run the project
+---
 
-```bash
-# development
-$ npm run start
+## 🧪 Useful Commands
 
-# watch mode
-$ npm run start:dev
+| Command | Description |
+|----------|-------------|
+| `npm run start:dev` | Run the API in development mode |
+| `npx prisma studio` | Open Prisma’s visual database editor |
+| `npx prisma migrate dev --name <name>` | Create and apply a new database migration |
+| `docker-compose up -d` | Start containers in detached mode |
+| `docker-compose down` | Stop and remove all containers |
 
-# production mode
-$ npm run start:prod
-```
+---
 
-## Run tests
+## 📚 API Documentation (Swagger)
 
-```bash
-# unit tests
-$ npm run test
+Swagger integration will be configured in **Week 2**, once we create the first module (`Users`).
 
-# e2e tests
-$ npm run test:e2e
+After configuration, the docs will be available at:  
+👉 [http://localhost:3000/api](http://localhost:3000/api)
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Deployment
+## 🧠 Development Notes
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- All environment variables are stored in `.env`
+- Always keep Prisma and your database schema in sync using migrations
+- Follow NestJS modular architecture:
+  - Controllers: define routes and handle requests
+  - Services: contain all business logic
+  - DTOs: define and validate input data
+- Use `class-validator` for input validation
+- Avoid putting logic inside controllers
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+---
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+## 🧾 License
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+This project is for educational and professional development purposes — feel free to use and modify it.
 
-## Resources
+---
 
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+✍️ **Author:** Henrique Silva  
+📅 **Started:** October 2025  
+🔗 **Stack:** NestJS · Prisma · PostgreSQL · Docker
